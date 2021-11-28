@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        TextView zmienna = findViewById(R.id.zmiennanapis); //deklaracja zmiennej
         tablica[0] = findViewById(R.id.b1); //deklaracja 1 przycisku
         tablica[1] = findViewById(R.id.b2); //deklaracja 2 przycisku
         tablica[2] = findViewById(R.id.b3); //deklaracja 3 przycisku
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             checkTablica[i] = false;
         }
         ktoZaczyna(); //sprawdzanie kto wygrał poprzednią grę (SharedPreferences)
+        zmienna.setText("ty"); //ustawienie zmiennej na podanie informacji kogo kolej
     }
     /*
             ░█░█░▀█▀░█▀█░░░▀▀█░█▀█░█▀▀░▀▀█░█▀█░▀█▀░█▀▀
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             ░▀░▀░░▀░░▀▀▀░░░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀
      */
     public void ktoZaczyna(){
+
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE); //pobranie preferencji
         ktoZaczyna = prefs.getBoolean("ktoZaczyna", false);  //wczytanie zwycięzcy z poprzedniej gry
             if(ktoZaczyna){ //jeśli pobrana preferencja jest pozytywna (true)
@@ -198,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void restart(View view) {
         TextView text = findViewById(R.id.zwyklynapis); //deklaracja zmiennej
-        TextView zmienna = findViewById(R.id.zmiennanapis); //deklaracja zmiennej
+
                 /*
 WYPEŁNIENIE TABLICY SPRAWDZAJĄCEJ ZAZNACZENIE NA FAlSE (NIE ZAZNACZONE), USTAWIENIE PRZYCISKÓW NA ODBLOKOWANE ORAZ USTAWIENIE ZAWARTOŚCI NA PUSTE
          */
@@ -209,6 +211,6 @@ WYPEŁNIENIE TABLICY SPRAWDZAJĄCEJ ZAZNACZENIE NA FAlSE (NIE ZAZNACZONE), USTAW
         }
         czyWygrana = false; //ustawienie czyWygrana na false (gra sie toczy)
         text.setText("Aktualny ruch: "); //ustawienie zmiennej na "aktualny ruch:"
-        zmienna.setText("ty"); //ustawienie zmiennej na podanie informacji kogo kolej
+
     }
 }
